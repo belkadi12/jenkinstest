@@ -15,6 +15,7 @@ pipeline {
                   stage ("pushimage") {
                   steps {
                         sh """
+                              - echo ${whoami}
                               - docker login -u  ${DOCKER_USERNAME}  -p ${DOCKER_PASSWORD}
                               - docker push bachirbelkadi/jenkins:latest 
                         
