@@ -9,7 +9,7 @@ pipeline {
                   stage ("build") {
                   steps {
                         sh """ 
-                              - echo ${whoami}
+                              - echo ${(whoami)}
                               - docker build -t bachirbelkadi/jenkins:latest . 
                         """
 
