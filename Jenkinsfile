@@ -1,10 +1,6 @@
 pipeline {
       agent any 
 
-      environment {
-            DOCKER = credentials ('Docker')
-                  }
-
             stages {
                   stage ("build") {
                   steps {
@@ -16,9 +12,10 @@ pipeline {
                   }
                   stage ("pushimage") {
                   steps {
+                        withCredentials([usernamePassword(credentialsId: 'Docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')])
                         sh """
                               
-                              - docker login -u  ${DOCKER_USERNAME}  -p ${DOCKER_PASSWORD}
+                              - docker login -u  ${USERNAME}  -p ${PASSWORD}
                               - docker push bachirbelkadi/jenkins:latest 
                         
                         """
