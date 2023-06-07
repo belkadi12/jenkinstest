@@ -1,10 +1,13 @@
 pipeline {
-      agent any 
+      agent {
+            label "docker"
+      }
 
             stages {
                   stage ("build") {
                   steps {
                         sh "ls -l ; whoami ; pwd ; docker -v"
+                        sh " touch bachir"
 
                         sh " docker build -t bachirbelkadi/jenkins:latest . "
 
