@@ -1,12 +1,24 @@
 pipeline {
       agent any 
 
+      environment {
+            DOCKER = credentials ('git')
+                  }
+
             stages {
-                  stage ("test stage") {
+                  stage ("build") {
                   steps {
-                        echo " hello world"
+                        sh """ docker build -t bachirbelkadi/jenkins:latest . """
 
                         }
                   }
+                  stage ("pushimage") {
+                        sh """
+                              - docker login -u  ${DOCKER_USERNAME}  -p ${DOCKER_PASSWORD}
+                              - docker push bachirbelkadi/jenkins:latest 
+                        
+                        """
+                  }
+                  
             }
 }
