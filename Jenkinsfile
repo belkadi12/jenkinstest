@@ -8,14 +8,17 @@ pipeline {
             stages {
                   stage ("build") {
                   steps {
-                        sh """ docker build -t bachirbelkadi/jenkins:latest . """
+                        sh """ 
+                              - - echo ${whoami}
+                              -docker build -t bachirbelkadi/jenkins:latest . 
+                        """
 
                         }
                   }
                   stage ("pushimage") {
                   steps {
                         sh """
-                              - echo ${whoami}
+                              
                               - docker login -u  ${DOCKER_USERNAME}  -p ${DOCKER_PASSWORD}
                               - docker push bachirbelkadi/jenkins:latest 
                         
