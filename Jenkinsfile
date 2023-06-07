@@ -8,7 +8,7 @@ pipeline {
             stages {
                   stage ("build") {
                   steps {
-                        sh "ls -l ; whoami "
+                        sh "ls -l ; whoami ; pwd ; docker -v"
 
                         sh """ 
                               - echo $USER
