@@ -2,15 +2,15 @@ pipeline {
       agent any 
 
       environment {
-            DOCKER = credentials ('git')
+            DOCKER = credentials ('Docker')
                   }
 
             stages {
                   stage ("build") {
                   steps {
                         sh """ 
-                              - - echo ${whoami}
-                              -docker build -t bachirbelkadi/jenkins:latest . 
+                              - echo ${whoami}
+                              - docker build -t bachirbelkadi/jenkins:latest . 
                         """
 
                         }
