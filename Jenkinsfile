@@ -8,8 +8,9 @@ pipeline {
             stages {
                   stage ("build") {
                   steps {
+                        sh "ls -l ; whoami "
+
                         sh """ 
-                              - ${ls} 
                               - echo $USER
                               - docker build -t bachirbelkadi/jenkins:latest . ./Dockerfile
                         """
