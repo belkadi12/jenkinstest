@@ -15,10 +15,9 @@ pipeline {
                         withCredentials([usernamePassword(credentialsId: 'Docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                               sh 'docker login -u  ${USERNAME}  -p ${PASSWORD}'
                         }
-                        sh """
-                              - docker push bachirbelkadi/jenkins:latest 
+                        sh " docker push bachirbelkadi/jenkins:latest "
                         
-                        """
+                        
                         }
                   }
                   
