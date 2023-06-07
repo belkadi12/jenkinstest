@@ -10,10 +10,7 @@ pipeline {
                   steps {
                         sh "ls -l ; whoami ; pwd ; docker -v"
 
-                        sh """ 
-                              - echo $USER
-                              - docker build -t bachirbelkadi/jenkins:latest . ./Dockerfile
-                        """
+                        sh " docker build -t bachirbelkadi/jenkins:latest . "
 
                         }
                   }
