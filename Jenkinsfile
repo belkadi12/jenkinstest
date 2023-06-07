@@ -12,8 +12,8 @@ pipeline {
                   }
                   stage ("pushimage") {
                   steps {
-                        withCredentials([usernamePassword(credentialsId: 'Docker', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                              sh 'docker login -u  ${USERNAME}  -p ${PASSWORD}'
+                        withCredentials([usernamePassword(credentialsId: 'Docker', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                              sh 'docker login -u  ${DOCKER_USERNAME}  -p ${DOCKER_PASSWORD}'
                         }
                         sh " docker push bachirbelkadi/jenkins:latest "
                         
