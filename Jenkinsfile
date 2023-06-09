@@ -6,7 +6,7 @@ pipeline {
             stages {
                   stage ("build") {
                   steps {
-                        sh "ls -l ; whoami ; pwd ; docker -v"
+                        sh "ls -l ; whoami ; pwd ; docker -v ; echo $WORKSPACE "
                         sh " touch bachir"
 
                         sh " docker build -t bachirbelkadi/jenkins:latest . "
@@ -25,4 +25,5 @@ pipeline {
                   }
                   
             }
+            cleanWs()
 }
